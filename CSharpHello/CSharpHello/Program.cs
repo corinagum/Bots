@@ -33,7 +33,7 @@ namespace CSharpHello
             }
             foreach (var character in LetterCounter)
             {
-                if(character.Value > 1 && repeat == true)
+                if(character.Value > 1)
                 {
                     Console.WriteLine("The letter {0} appears in your name {1} times", character.Key, character.Value);
                 }
