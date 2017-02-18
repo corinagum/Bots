@@ -85,7 +85,9 @@ module.exports = function (BUILDER) {
 					session.endDialog('Ok, come back another time!');
 					break;
 				case true:
-					session.send('Great! Have fun reading ' + session.userData.book);
+					if(session.userData.book) {
+						session.send('Great! Have fun reading ' + session.userData.book);		
+					}
 					session.userData.bookChosen = true;
 					session.userData.entities = null;
 					session.endConversation();
@@ -113,9 +115,9 @@ module.exports = function (BUILDER) {
 						else if(results.response == 'Sci-Fi'){
 							session.userData.booklist = HELPER.books.scifi;
 						}
-						else if(results.response == 'end') {
-							session.endDialog('Ok, come back another time!');
-						}
+						// else if(results.response == 'end') {
+						// 	session.endDialog('Ok, come back another time!');
+						// }
 						
 						if(session.userData.booklist) {
 							session.userData.book = session.userData.booklist[Math.floor((Math.random() * session.userData.booklist.length))];
@@ -134,7 +136,9 @@ module.exports = function (BUILDER) {
 					session.endDialog('Ok, come back another time!');
 					break;
 				case true:
-					session.send('Great! Have fun reading ' + session.userData.book);
+					if(session.userData.book) {
+						session.send('Great! Have fun reading ' + session.userData.book);		
+					}
 					session.userData.bookChosen = true;
 					session.userData.entities = null;
 					session.endDialog();

@@ -25,6 +25,9 @@ module.exports.PICKER = [
 	}, 
 	function(session, results) {
 		if(results.response == 'end' || !results.response) {
+			session.userData.booklist = null;
+			session.userData.book = null;
+			session.userData.entities = null;
 			session.endDialog('Ok, come back another time!')
 		}
 		else if(results.response == 'yes') {
@@ -40,6 +43,7 @@ module.exports.PICKER = [
 		}
 		else if (results.response && session.userData.booklist.length < 1) {
 			session.userData.booklist = null;
+			session.userData.entities = null;
 			session.replaceDialog('/PickBook');
 		}
 		else {
