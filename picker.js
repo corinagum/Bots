@@ -1,6 +1,6 @@
 const BUILDER = require('botbuilder');
 const HELPER = require('./helper.js');
-exports.PICKER = [
+module.exports.PICKER = [
 	function(session, args){
 		session.userData.booklist = args ? args.booklist : session.userData.booklist;
 		session.userData.book = session.userData.booklist[Math.floor((Math.random() * session.userData.booklist.length))];
@@ -9,10 +9,10 @@ exports.PICKER = [
 	}, 
 	function (session, results){
 		if(results.response) {
-			let temp = session.userData.book
-			session.userData.booklist = null;
-			session.userData.book = null;
-			session.endDialog('Great! Have fun reading ' + temp);
+			session.send('Great! Have fun reading ' + session.userData.book);
+			session.userData.bookChosen = true;
+			session.userData.entities = null;
+			session.endConversation();
 		}
 
 		else if(session.userData.booklist.length < 1) {
@@ -28,10 +28,10 @@ exports.PICKER = [
 			session.endDialog('Ok, come back another time!')
 		}
 		else if(results.response == 'yes') {
-			let temp = session.userData.book
-			session.userData.booklist = null;
-			session.userData.book = null;
-			session.endDialog('Great! Have fun reading ' + temp);
+			session.send('Great! Have fun reading ' + session.userData.book);
+			session.userData.bookChosen = true;
+			session.userData.entities = null;
+			session.endConversation();
 		}
 
 		else if(results.response == 'no') {
@@ -40,10 +40,10 @@ exports.PICKER = [
 		}
 		else if (results.response && session.userData.booklist.length < 1) {
 			session.userData.booklist = null;
-			session.replaceDialog('/');
+			session.replaceDialog('/PickBook');
 		}
 		else {
-			BUILDER.Prompts.text(session, 'Sorry, I\'m a severely limited bot. Please pick from the following genres:\n Fantasy\n Non-Fiction\n History\n Sci-Fi');	
+			HELPER.poorBot(session);	
 		}
 	}
 ]
