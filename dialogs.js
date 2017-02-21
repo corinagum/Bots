@@ -39,9 +39,7 @@ module.exports = function (BUILDER) {
 
 		}, 
 		function(session, results) {
-			if (session.userData.entities) {
-				results.response = session.userData.entities ? session.userData.entities[0]["type"] : results.response;
-			}
+			results.response = session.userData.entities ? session.userData.entities[0]["type"] : results.response;
 			if(results.response == 'end'){
 				session.endDialog('Ok, come back another time!');
 			}
@@ -114,11 +112,7 @@ module.exports = function (BUILDER) {
 						}
 						else if(results.response == 'Sci-Fi'){
 							session.userData.booklist = HELPER.books.scifi;
-						}
-						// else if(results.response == 'end') {
-						// 	session.endDialog('Ok, come back another time!');
-						// }
-						
+						}				
 						if(session.userData.booklist) {
 							session.userData.book = session.userData.booklist[Math.floor((Math.random() * session.userData.booklist.length))];
 							BUILDER.Prompts.confirm(session, 'Why don\'t you try ' + session.userData.book + '?');

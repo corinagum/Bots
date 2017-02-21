@@ -3,16 +3,15 @@ Please note that I included the node_modules directory, so download may take lon
 
 ## To Run: 
 1. Please add provided config.js file to configure LUIS, or see config-sample.js to create new LUIS keys.
-1. in the console, start the app by typing `node app.js`
+1. In the console, start the app by typing `node app.js`
 1. Say 'hi' to the bot!
 1. Answer its questions
 
 ## What this Bot Does
-This bot is intended to help the user decide on a new book to read by selecting the genre of the book.
+This bot is intended to help the user decide on a new book to read by selecting the genre of the book and provide a few reading options.
 
 ## What this Bot Contains
-* MSFT Bot Framework
-* Written with Node.js
+* MSFT Bot Framework for Node JS
 * LUIS
 
 ## How I would improve this app
