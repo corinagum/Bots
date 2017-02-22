@@ -79,7 +79,7 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
 ])
 .matches('PickType', (session, args, next) => { 
     session.beginDialog('/PickType', session)
-}
+})
 
 bot.dialog('/PickType', [(session, args, next) => {
 
