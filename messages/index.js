@@ -24,7 +24,7 @@ var luisAppId = process.env.LuisAppId;
 var luisAPIKey = process.env.LuisAPIKey;
 var luisAPIHostName = process.env.LuisAPIHostName || 'westus.api.cognitive.microsoft.com';
 
-const LuisModelUrl = 'https://' + luisAPIHostName + '/luis/v2/apps/' + luisAppId + '?subscription-key=' + luisAPIKey;
+const LuisModelUrl = 'https://' + luisAPIHostName + '/luis/v2.0/apps/' + luisAppId + '?subscription-key=' + luisAPIKey;
 
 // Main dialog with LUIS
 var recognizer = new builder.LuisRecognizer(LuisModelUrl);
@@ -32,10 +32,11 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
 /*
 .matches('<yourIntent>')... See details at http://docs.botframework.com/builder/node/guides/understanding-natural-language/
 */
-.matches('None', (session, args) => {
+intents.matches('None', (session, args) => {
     session.send('Hi! This is the None intent handler. You said: \'%s\'.', session.message.text);
-})
-.matches('Greeting', [(session, args, next) => { 
+});
+
+intents.matches('Greeting', [(session, args, next) => { 
     session.send('Welcome! This is the "Pick Your Pokemon Chatbot"!')
     builder.Prompts.text('Pick a Pokemon Type.')
     }, 
@@ -76,10 +77,11 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
             }
         })
     }   
-])
-.matches('PickType', (session, args, next) => { 
+]);
+
+intents.matches('PickType', (session, args, next) => { 
     session.beginDialog('/PickType', session)
-})
+});
 
 bot.dialog('/PickType', [(session, args, next) => {
 
