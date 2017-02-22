@@ -43,7 +43,7 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] })
         //LUIS call to parse pokemon type
         //if the results we receive from LUIS contains entities that match a pokemon type, we will start the '/PickType' dialog.
         var options = {
-            host: luisAPIHostName
+            host: luisAPIHostName,
             path: LuisAppId + '?subscription-key=' + luisAPIKey + "&q=" + results.response.replace(/ /g, '%20') + "&verbose=true"
         }
          new Promise(function(resolve,reject) {
@@ -85,7 +85,7 @@ bot.dialog('/PickType', [(session, args, next) => {
 
     if(session.userData.PokemonType) {
        var options = {
-           host: 'pokeapi.co'
+           host: 'pokeapi.co',
            path: 'api/v2/type/' + session.userData.PokemonType
        }
        new Promise(function(resolve,reject) {
