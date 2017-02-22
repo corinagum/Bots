@@ -112,11 +112,9 @@ bot.dialog('/PickType', [(session, args, next) => {
            session.send("Your new " + json.name + "-type Pokemon is " + pokemonName);
            session.endDialog();
        })
-    }
+    } 
 
-},
-
-]);
+}]);
 
 intents.onDefault((session) => {
     session.send('Sorry, I did not understand \'%s\'.', session.message.text);
