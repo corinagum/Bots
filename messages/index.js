@@ -99,10 +99,11 @@ bot.dialog('/PickType', [
     }
 
     if(session.userData.PokemonType) {
-       var options = {
-           host: 'pokeapi.co',
-           path: 'api/v2/type/' + session.userData.PokemonType
-       }
+        function () {
+           var options = {
+               host: 'pokeapi.co',
+               path: 'api/v2/type/' + session.userData.PokemonType
+            }
        var response = '';
        new Promise(function(resolve,reject) {
            let request = require("https").request(options, function(res) {
@@ -121,6 +122,8 @@ bot.dialog('/PickType', [
                });
            }).end();
        })
+
+    }()
        .then(function(res) {
            var json = JSON.parse(res);
            var idx = Math.floor((Math.random() * json.pokemon.length));
