@@ -89,15 +89,22 @@ intents.matches('PickType', (session, args, next) => {
 bot.dialog('/PickType', [
     (session, args, next) => {
     var LUISTypes = ['fire','electric','ground','water','bug','fighting','normal','poison','dragon','flying'];
-    for(var i = 0; i < LUISTypes.length; i++) {
-        session.send("Checking for type", LUISTypes[i]);
-       if(!session.userData.PokemonType) {
-            session.userData.PokemonType = builder.EntityRecognizer.findEntity(args.entities, LUISTypes[i]) ? builder.EntityRecognizer.findEntity(args.entities, LUISTypes[i]).type: null;
-        }
-        if(session.userData.PokemonType) {
-            break;
-        }
+    if(args.entities[0].type == 'water') {
+        session.userData.PokemonType = builder.EntityRecognizer.findEntity(args.entities, 'water');
     }
+    if(args.entities[0].type == 'fire') {
+        session.userData.PokemonType = builder.EntityRecognizer.findEntity(args.entities, 'fire');
+    }
+    // for(var i = 0; i < LUISTypes.length; i++) {
+    //     session.send("Checking for type", LUISTypes[i]);
+    //    // if(!session.userData.PokemonType) {
+    //    //      session.userData.result = builder.EntityRecognizer.findEntity(args.entities, LUISTypes[i]) ? builder.EntityRecognizer.findEntity(args.entities, LUISTypes[i]): null;
+    //    //      session.userData.PokemonType = session.userData.result.type;
+    //    //  }
+    //     if(session.userData.PokemonType) {
+    //         break;
+    //     }
+    // }
 
     if(session.userData.PokemonType) {
         getType(session.userData.PokemonType)
@@ -110,7 +117,10 @@ bot.dialog('/PickType', [
                session.endDialog();
            })
     } 
-
+    else {
+        session.send("PokemonType not found, start over");
+        session.endDialog();
+    }
 }]);
 
 intents.onDefault((session) => {
