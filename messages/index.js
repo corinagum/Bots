@@ -44,6 +44,7 @@ intents.matches('Greeting', [(session, args, next) => {
     function(session, results){
         //LUIS call to parse pokemon type
         //if the results we receive from LUIS contains entities that match a pokemon type, we will start the '/PickType' dialog.
+        session.send('this is test send');
         var options = {
             host: luisAPIHostName,
             path: LuisAppId + '?subscription-key=' + luisAPIKey + "&q=" + results.response.replace(/ /g, '%20') + "&verbose=true"
