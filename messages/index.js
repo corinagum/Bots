@@ -90,6 +90,7 @@ bot.dialog('/PickType', [
     (session, args, next) => {
     var LUISTypes = ['fire','electric','ground','water','bug','fighting','normal','poison','dragon','flying'];
     for(var i = 0; i < LUISTypes.length; i++) {
+        session.send("Checking for type", LUISTypes[i]);
        if(!session.userData.PokemonType) {
             session.userData.PokemonType = builder.EntityRecognizer.findEntity(args.entities, LUISTypes[i]) ? builder.EntityRecognizer.findEntity(args.entities, LUISTypes[i]).type: null;
         }
@@ -101,6 +102,7 @@ bot.dialog('/PickType', [
     if(session.userData.PokemonType) {
         getType(session.userData.PokemonType)
            .then(function(res) {
+            session.send("finished api call")
                var json = JSON.parse(res);
                var idx = Math.floor((Math.random() * json.pokemon.length));
                var pokemonName = json.pokemon[idx]['pokemon']['name'];
@@ -127,6 +129,7 @@ if (useEmulator) {
 }
 
 function getType(requestType) {
+    session.send("This is from inside the helper function")
     var options = {
             host: 'pokeapi.co',
                path: 'api/v2/type/' + requestType
@@ -145,6 +148,7 @@ function getType(requestType) {
                    if(!response) {
                        return resolve('');
                    }
+                   session.send("response exists!")
                    return resolve(response)
                });
            }).end();
