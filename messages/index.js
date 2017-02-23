@@ -89,6 +89,7 @@ intents.matches('PickType', (session, args, next) => {
 bot.dialog('/PickType', [
     (session, args, next) => {
     var LUISTypes = ['fire','electric','ground','water','bug','fighting','normal','poison','dragon','flying'];
+    session.send(args.entities);
     if(args.entities[0].type == 'water') {
         session.userData.PokemonType = builder.EntityRecognizer.findEntity(args.entities, 'water');
     }
