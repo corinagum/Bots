@@ -29,12 +29,13 @@ const LuisModelUrl = 'https://' + luisAPIHostName + '/luis/v2.0/apps/' + luisApp
 // Main dialog with LUIS
 var recognizer = new builder.LuisRecognizer(LuisModelUrl);
 var intents = new builder.IntentDialog({ recognizers: [recognizer] })
+bot.dialog('/', intents);  
 /*
 .matches('<yourIntent>')... See details at http://docs.botframework.com/builder/node/guides/understanding-natural-language/
 */
-intents.matches('None', (session, args) => {
-    session.send('Hi! This is the None intent handler. You said: \'%s\'.', session.message.text);
-});
+// intents.matches('None', (session, args) => {
+//     session.send('Hi! This is the None intent handler. You said: \'%s\'.', session.message.text);
+// });
 
 intents.matches('Greeting', [(session, args, next) => { 
     session.send('Welcome! This is the "Pick Your Pokemon Chatbot"! Pick a Pokemon Type.')
@@ -129,9 +130,7 @@ bot.dialog('/PickType', [(session, args, next) => {
 
 intents.onDefault((session) => {
     session.send('Sorry, I did not understand \'%s\'.', session.message.text);
-});
-
-bot.dialog('/', intents);    
+});  
 
 if (useEmulator) {
     var restify = require('restify');
