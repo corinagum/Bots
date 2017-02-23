@@ -91,8 +91,7 @@ bot.dialog('/PickType', [
     var LUISTypes = ['fire','electric','ground','water','bug','fighting','normal','poison','dragon','flying'];
     for(var i = 0; i < LUISTypes.length; i++) {
        if(!session.userData.PokemonType) {
-            session.userData.PokemonType = builder.EntityRecognizer.findEntity(args.entities, LUISTypes[i]) ? builder.EntityRecognizer.findEntity(args.entities, LUISTypes[i]): null;
-            session.userData.PokemonType = session.userData.PokemonType.
+            session.userData.PokemonType = builder.EntityRecognizer.findEntity(args.entities, LUISTypes[i]) ? builder.EntityRecognizer.findEntity(args.entities, LUISTypes[i]).type: null;
         }
         if(session.userData.PokemonType) {
             break;
