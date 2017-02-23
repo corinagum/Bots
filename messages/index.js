@@ -37,59 +37,62 @@ bot.dialog('/', intents);
 //     session.send('Hi! This is the None intent handler. You said: \'%s\'.', session.message.text);
 // });
 
-intents.matches('Greeting', [(session, args, next) => { 
-    session.send('Welcome! This is the "Pick Your Pokemon Chatbot"!');
-    builder.Prompts.text(session, 'Pick a Pokemon Type.');
-    }, 
-    function(session, results){
-        //LUIS call to parse pokemon type
-        //if the results we receive from LUIS contains entities that match a pokemon type, we will start the '/PickType' dialog.
-        session.send('this is test send');
-        var options = {
-            host: luisAPIHostName,
-            path: LuisAppId + '?subscription-key=' + luisAPIKey + "&q=" + results.response.replace(/ /g, '%20') + "&verbose=true"
-        }
-         new Promise(function(resolve,reject) {
-            let request = require("https").request(options, function(res) {
-                res.setEncoding('utf8');
-                res.on('data', function(chunk) {
-                    response += chunk;
-                });
-                res.on('error', function(err) {
-                    return reject(err);
-                });
-                res.on('end', function() {
-                    if(!response) {
-                        return resolve('');
-                    }
-                    return resolve(response)
-                });
-            }).end()
-        })
-        .then(function(res) {
-            var json = JSON.parse(res);
-            var type = json.entities[0]['type'] ? json.entities[0]['type'] : null;
-            if(!type) {
-                session.send("You didn't pick a valid Pokemon type, so I'll end the conversation!");
-                builder.DialogAction.endDialog();
-            } 
-            else if(type) {
-                session.userData.PokemonType = type;
-                session.beginDialog('/PickType', session);
-            }
-        })
-    }   
-]);
+// intents.matches('Greeting', [(session, args, next) => { 
+//     session.send('Welcome! This is the "Pick Your Pokemon Chatbot"!');
+//     builder.Prompts.text(session, 'Pick a Pokemon Type.');
+//     }, 
+//     function(session, results){
+//         //LUIS call to parse pokemon type
+//         //if the results we receive from LUIS contains entities that match a pokemon type, we will start the '/PickType' dialog.
+//         var options = {
+//             host: luisAPIHostName,
+//             path: LuisAppId + '?subscription-key=' + luisAPIKey + "&q=" + results.response.replace(/ /g, '%20') + "&verbose=true"
+//         }
+//          var response = '';
+//          new Promise(function(resolve,reject) {
+//             let request = require("https").request(options, function(res) {
+//                 res.setEncoding('utf8');
+//                 res.on('data', function(chunk) {
+//                     response += chunk;
+//                 });
+//                 res.on('error', function(err) {
+//                     return reject(err);
+//                 });
+//                 res.on('end', function() {
+//                     if(!response) {
+//                         return resolve('');
+//                     }
+//                     return resolve(response)
+//                 });
+//             }).end()
+//         })
+//         .then(function(res) {
+//             var json = JSON.parse(res);
+//             var type = json.entities[0]['type'] ? json.entities[0]['type'] : null;
+//             if(!type) {
+//                 session.send("You didn't pick a valid Pokemon type, so I'll end the conversation!");
+//                 builder.DialogAction.endDialog();
+//             } 
+//             else if(type) {
+//                 session.userData.PokemonType = type;
+//                 session.beginDialog('/PickType', session);
+//             }
+//         })
+//     }   
+// ]);
 
 intents.matches('PickType', (session, args, next) => { 
+    
     session.beginDialog('/PickType', session)
 });
 
-bot.dialog('/PickType', [(session, args, next) => {
+bot.dialog('/PickType', [
+    (session, args, next) => {
     var LUISTypes = ['fire','electric','ground','water','bug','fighting','normal','poison','dragon','flying'];
     for(var i = 0; i < LUISTypes.length; i++) {
        if(!session.userData.PokemonType) {
-            session.userData.PokemonType = builder.EntityRecognizer.findEntity(args.entities, LUISTypes[i]) ? builder.EntityRecognizer.findEntity(args.entities, LUISTypes[i]).type : null;
+            session.userData.PokemonType = builder.EntityRecognizer.findEntity(args.entities, LUISTypes[i]) ? builder.EntityRecognizer.findEntity(args.entities, LUISTypes[i]): null;
+            session.userData.PokemonType = session.userData.PokemonType.
         }
         if(session.userData.PokemonType) {
             break;
@@ -101,6 +104,7 @@ bot.dialog('/PickType', [(session, args, next) => {
            host: 'pokeapi.co',
            path: 'api/v2/type/' + session.userData.PokemonType
        }
+       var response = '';
        new Promise(function(resolve,reject) {
            let request = require("https").request(options, function(res) {
                res.setEncoding('utf8');
@@ -116,7 +120,7 @@ bot.dialog('/PickType', [(session, args, next) => {
                    }
                    return resolve(response)
                });
-           }).end()
+           }).end();
        })
        .then(function(res) {
            var json = JSON.parse(res);
