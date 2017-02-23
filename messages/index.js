@@ -99,10 +99,37 @@ bot.dialog('/PickType', [
     }
 
     if(session.userData.PokemonType) {
-        function () {
-           var options = {
-               host: 'pokeapi.co',
-               path: 'api/v2/type/' + session.userData.PokemonType
+        getType(session.userData.PokemonType)
+           .then(function(res) {
+               var json = JSON.parse(res);
+               var idx = Math.floor((Math.random() * json.pokemon.length));
+               var pokemonName = json.pokemon[idx]['pokemon']['name'];
+               session.send("Your new " + json.name + "-type Pokemon is " + pokemonName);
+               session.endDialog();
+           })
+    } 
+
+}]);
+
+intents.onDefault((session) => {
+    session.send('Sorry, I did not understand \'%s\'.', session.message.text);
+});  
+
+if (useEmulator) {
+    var restify = require('restify');
+    var server = restify.createServer();
+    server.listen(3978, function() {
+        console.log('test bot endpont at http://localhost:3978/api/messages');
+    });
+    server.post('/api/messages', connector.listen());    
+} else {
+    module.exports = { default: connector.listen() }
+}
+
+function getType(requestType) {
+    var options = {
+            host: 'pokeapi.co',
+               path: 'api/v2/type/' + requestType
             }
        var response = '';
        new Promise(function(resolve,reject) {
@@ -122,30 +149,4 @@ bot.dialog('/PickType', [
                });
            }).end();
        })
-
-    }()
-       .then(function(res) {
-           var json = JSON.parse(res);
-           var idx = Math.floor((Math.random() * json.pokemon.length));
-           var pokemonName = json.pokemon[idx]['pokemon']['name'];
-           session.send("Your new " + json.name + "-type Pokemon is " + pokemonName);
-           session.endDialog();
-       })
-    } 
-
-}]);
-
-intents.onDefault((session) => {
-    session.send('Sorry, I did not understand \'%s\'.', session.message.text);
-});  
-
-if (useEmulator) {
-    var restify = require('restify');
-    var server = restify.createServer();
-    server.listen(3978, function() {
-        console.log('test bot endpont at http://localhost:3978/api/messages');
-    });
-    server.post('/api/messages', connector.listen());    
-} else {
-    module.exports = { default: connector.listen() }
 }
