@@ -37,8 +37,8 @@ intents.matches('None', (session, args) => {
 });
 
 intents.matches('Greeting', [(session, args, next) => { 
-    session.send('Welcome! This is the "Pick Your Pokemon Chatbot"!')
-    builder.Prompts.text('Pick a Pokemon Type.')
+    session.send('Welcome! This is the "Pick Your Pokemon Chatbot"! Pick a Pokemon Type.')
+    // builder.Prompts.text('Pick a Pokemon Type.')
     }, 
     function(session, results){
         //LUIS call to parse pokemon type
