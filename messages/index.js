@@ -89,17 +89,18 @@ intents.matches('PickType', (session, args, next) => {
 bot.dialog('/PickType', [
     (session, args, next) => {
     var LUISTypes = ['fire','electric','ground','water','bug','fighting','normal','poison','dragon','flying'];
-    session.userData.PokemonType = null;
-    for(var i = 0; i < LUISTypes.length; i++) {
-       if(!session.userData.PokemonType) {
-            session.send("Checking for type", LUISTypes[i]);
-            session.userData.result = builder.EntityRecognizer.findEntity(args.entities, LUISTypes[i]) ? builder.EntityRecognizer.findEntity(args.entities, LUISTypes[i]): null;
-            session.userData.PokemonType = session.userData.result.type;
-        }
-        if(session.userData.PokemonType) {
-            break;
-        }
-    }
+    session.userData.PokemonType = 'water';
+    // for(var i = 0; i < LUISTypes.length; i++) {
+    //    if(!session.userData.PokemonType) {
+    //         session.send("Checking for type", LUISTypes[i]);
+    //         session.userData.result = builder.EntityRecognizer.findEntity(args.entities, LUISTypes[i]) ? builder.EntityRecognizer.findEntity(args.entities, LUISTypes[i]): null;
+    //         session.userData.PokemonType = session.userData.result.type;
+    //     }
+    //     if(session.userData.PokemonType) {
+    //         session.send("Pokemon type found");
+    //         break;
+    //     }
+    // }
 
     if(session.userData.PokemonType) {
         getType(session.userData.PokemonType)
