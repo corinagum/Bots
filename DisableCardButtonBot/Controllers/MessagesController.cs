@@ -7,6 +7,8 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Microsoft.Bot.Connector;
 using Newtonsoft.Json;
+using Microsoft.Bot.Builder.Dialogs;
+using System.Diagnostics;
 
 namespace DisableCardButtonBot
 {
@@ -21,12 +23,20 @@ namespace DisableCardButtonBot
         {
             if (activity.Type == ActivityTypes.Message)
             {
+                // create connector service
                 ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
-                // calculate something for us to return
-                int length = (activity.Text ?? string.Empty).Length;
-
+                // get state client object
+                StateClient stateclient = activity.GetStateClient();
+                BotData userdata = await stateclient.BotState.GetUserDataAsync(activity.ChannelId, activity.From.Id);
+                userdata.SetProperty<bool>("SentGreeting", false);
+               
+                if(activity.Text == "hello" || activity.Text == "hi")
+                {
+                    userdata.SetProperty<bool>("SentGreeting", true);
+                }
+                await Conversation.SendAsync(activity, () => new CardDialog());
                 // return our reply to the user
-                Activity reply = activity.CreateReply($"Hi, You sent {activity.Text} which was {length} characters");
+                Activity reply = activity.CreateReply($"Hi, You sent {activity.Text}.  Your greeting status is {userdata.GetProperty<bool>("SentGreeting")}");
                 await connector.Conversations.ReplyToActivityAsync(reply);
             }
             else
