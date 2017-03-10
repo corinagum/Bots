@@ -26,7 +26,10 @@ namespace DisableCardButtonBot
                 // create connector service
                 ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
                 // get state client object
-
+                StateClient stateClient = activity.GetStateClient();
+                // retrieve user data
+                BotData userData = await stateClient.BotState.GetUserDataAsync(activity.ChannelId, activity.From.Id);
+                
                 bool SentGreeting;
                 if (activity.Text == "hello" || activity.Text == "hi")
                 {
@@ -35,8 +38,14 @@ namespace DisableCardButtonBot
                 {
                     SentGreeting = false;
                 }
+                userData.SetProperty<bool>("SentGreeting", SentGreeting);
+                
+                // save state
+                await stateClient.BotState.SetUserDataAsync(activity.ChannelId, activity.From.Id, userData);
 
-                await Conversation.SendAsync(activity, () => new CardDialog(SentGreeting));
+                // initiate CardDialog
+                await Conversation.SendAsync(activity, () => new CardDialog());
+                
                 // return our reply to the user
                 Activity reply = activity.CreateReply($"You sent {activity.Text}.  Your greeting status is {SentGreeting}");
                 await connector.Conversations.ReplyToActivityAsync(reply);
