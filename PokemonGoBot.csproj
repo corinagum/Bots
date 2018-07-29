@@ -8,11 +8,28 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.7" />
-    <PackageReference Include="Microsoft.Bot.Builder.Ai.LUIS" Version="4.0.1-preview" />
-    <PackageReference Include="Microsoft.Bot.Builder.Core" Version="4.0.1-preview" />
-    <PackageReference Include="Microsoft.Bot.Builder.Core.Extensions" Version="4.0.1-preview" />
-    <PackageReference Include="Microsoft.Bot.Builder.Dialogs" Version="4.0.1-preview" />
-    <PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="4.0.1-preview" />
+    <PackageReference Include="Microsoft.Recognizers.Text" Version="1.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Bot.Builder">
+      <HintPath>..\botbuilder-dotnet\libraries\Microsoft.Bot.Builder\bin\Debug - NuGet Packages\netstandard2.0\Microsoft.Bot.Builder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bot.Builder.Ai.LUIS">
+      <HintPath>..\botbuilder-dotnet\libraries\Microsoft.Bot.Builder.Ai.LUIS\bin\Debug - NuGet Packages\netstandard2.0\Microsoft.Bot.Builder.Ai.LUIS.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bot.Builder.Dialogs">
+      <HintPath>..\botbuilder-dotnet\libraries\Microsoft.Bot.Builder.Dialogs\bin\Debug - NuGet Packages\netstandard2.0\Microsoft.Bot.Builder.Dialogs.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bot.Builder.Integration.AspNet.Core">
+      <HintPath>..\botbuilder-dotnet\libraries\integration\Microsoft.Bot.Builder.Integration.AspNet.Core\bin\Debug - NuGet Packages\netstandard2.0\Microsoft.Bot.Builder.Integration.AspNet.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bot.Connector">
+      <HintPath>..\botbuilder-dotnet\libraries\Microsoft.Bot.Builder\bin\Debug - NuGet Packages\netstandard2.0\Microsoft.Bot.Connector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bot.Schema">
+      <HintPath>..\botbuilder-dotnet\libraries\Microsoft.Bot.Builder\bin\Debug - NuGet Packages\netstandard2.0\Microsoft.Bot.Schema.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
