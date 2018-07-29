@@ -11,7 +11,7 @@ using Microsoft.Bot.Builder.Dialogs.Choices;
 using System.Collections.Generic;
 using Microsoft.Recognizers.Text;
 using System.Linq;
-using System.Text.RegularExpressions;
+using AdaptiveCards;
 
 namespace PokemonGoBot
 {
@@ -25,7 +25,7 @@ namespace PokemonGoBot
         {
             dialogs = new DialogSet();
             dialogs.Add("None", new WaterfallStep[] { DefaultDialog });
-            dialogs.Add("Help", new WaterfallStep[] { AskReminderTitle, SaveReminder });
+            dialogs.Add("Help", new WaterfallStep[] { HelpInfo });
             dialogs.Add("Cancel", new WaterfallStep[] { ShowReminders, ConfirmShow });
             dialogs.Add("PokemonEffectivenessInfo", new TextPrompt(TitleValidator));
             dialogs.Add("TypeEffectiveness", new ChoicePrompt(Culture.English));
@@ -42,34 +42,14 @@ namespace PokemonGoBot
 
         private Task DefaultDialog(DialogContext dialogContext, object args, SkipStepFunction next)
         {
-            return dialogContext.Context.SendActivityAsync("Hi! I'm a simple reminder bot. I can add reminders and show them.");
+            return dialogContext.Context.SendActivityAsync("Sorry I didn't understand. Enter 'Help' if you need directions on how to use this bot.");
         }
 
-        private async Task AskReminderTitle(DialogContext dialogContext, object args, SkipStepFunction next)
+        private async Task HelpInfo(DialogContext dialogContext, object args, SkipStepFunction next)
         {
-            var reminder = new Reminder(dialogContext.ActiveDialog.State);
-            dialogContext.ActiveDialog.State = reminder;
-            if (!string.IsNullOrEmpty(reminder.Title))
-            {
-                await dialogContext.Continue();
-            }
-            else
-            {
-                await dialogContext.Prompt("TitlePrompt", "What would you like to call your reminder?");
-            }
-        }
-
-        private async Task SaveReminder(DialogContext dialogContext, object args, SkipStepFunction next)
-        {
-            var reminder = new Reminder(dialogContext.ActiveDialog.State);
-            if (args is TextResult textResult)
-            {
-                reminder.Title = textResult.Value;
-            }
-            await dialogContext.Context.SendActivityAsync($"Your reminder named '{reminder.Title}' is set.");
-            var userContext = dialogContext.Context.GetUserState<UserState>();
-            userContext.Reminders.Add(reminder);
-            await dialogContext.End();
+            await dialogContext.Context.SendActivityAsync($"Currently I have two functions.");
+            await dialogContext.Context.SendActivityAsync($"Tell me a type (e.g. 'Fire') and I will send you a card detailing super effective and super ineffective moves are.");
+            await dialogContext.Context.SendActivityAsync($"Give me a Pokemon name (e.g. 'Pikachu') and I will tell you what types are super effective against that Pokemon, and if you would like, what types are weak against that Pokemon.")
         }
 
         private async Task ShowReminders(DialogContext dialogContext, object args, SkipStepFunction next)
