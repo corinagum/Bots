@@ -13,7 +13,7 @@ using Microsoft.Bot.Builder.TraceExtensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AspNetCore_LUIS_Bot
+namespace PokemonGoBot
 {
     public class Startup
     {
@@ -35,7 +35,7 @@ namespace AspNetCore_LUIS_Bot
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddBot<LuisBot>(options =>
+            services.AddBot<PokemonGoBot>(options =>
             {
                 options.CredentialProvider = new ConfigurationCredentialProvider(Configuration);
 

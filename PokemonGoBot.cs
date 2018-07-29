@@ -13,15 +13,15 @@ using Prompts = Microsoft.Bot.Builder.Prompts;
 using Microsoft.Recognizers.Text;
 using System.Linq;
 
-namespace AspNetCore_LUIS_Bot
+namespace PokemonGoBot
 {
-    public class LuisBot : IBot
+    public class PokemonGoBot : IBot
     {
         private const double LUIS_INTENT_THRESHOLD = 0.2d;
 
         private readonly DialogSet dialogs;
 
-        public LuisBot()
+        public PokemonGoBot()
         {
             dialogs = new DialogSet();
             dialogs.Add("None", new WaterfallStep[] { DefaultDialog });

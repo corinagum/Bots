@@ -4,7 +4,7 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace AspNetCore_LUIS_Bot
+namespace PokemonGoBot
 {
     public class Program
     {

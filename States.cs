@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-namespace AspNetCore_LUIS_Bot
+namespace PokemonGoBot
 {
     public class BaseState : Dictionary<string, object>
     {

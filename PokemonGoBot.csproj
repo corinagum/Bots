@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>PokemonGoBot</AssemblyName>
+    <RootNamespace>PokemonGoBot</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
