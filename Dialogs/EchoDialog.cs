@@ -20,6 +20,21 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
 
         public async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> argument)
         {
+            AdaptiveCard card = new AdaptiveCard();
+
+            card.Body.Add(new AdaptiveTextBlock()
+            {
+                Text = "Adaptive Card rendering test",
+                Size = AdaptiveTextSize.Large,
+                Weight = AdaptiveTextWeight.Bolder
+            });
+
+            Attachment attachment = new Attachment()
+            {
+                ContentType = AdaptiveCard.ContentType,
+                Content = card
+            };
+
             var message = await argument;
 
             if (message.Text == "reset")
@@ -33,7 +48,10 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
             }
             else
             {
-                await context.PostAsync($"{this.count++}: You said {message.Text}");
+                var replyToConversation = context.MakeMessage();
+                replyToConversation.Attachments.Add(attachment);
+                // return our reply to the user
+                await context.PostAsync(replyToConversation);
                 context.Wait(MessageReceivedAsync);
             }
         }
