@@ -35,25 +35,12 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                 Content = card
             };
 
-            var message = await argument;
+            var replyToConversation = context.MakeMessage();
+            replyToConversation.Attachments.Add(attachment);
+            // return our reply to the user
+            await context.PostAsync(replyToConversation);
+            context.Wait(MessageReceivedAsync);
 
-            if (message.Text == "reset")
-            {
-                PromptDialog.Confirm(
-                    context,
-                    AfterResetAsync,
-                    "Are you sure you want to reset the count?",
-                    "Didn't get that!",
-                    promptStyle: PromptStyle.Auto);
-            }
-            else
-            {
-                var replyToConversation = context.MakeMessage();
-                replyToConversation.Attachments.Add(attachment);
-                // return our reply to the user
-                await context.PostAsync(replyToConversation);
-                context.Wait(MessageReceivedAsync);
-            }
         }
 
         public async Task AfterResetAsync(IDialogContext context, IAwaitable<bool> argument)
