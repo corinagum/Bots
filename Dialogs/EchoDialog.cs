@@ -5,6 +5,7 @@ using Microsoft.Bot.Connector;
 using Microsoft.Bot.Builder.Dialogs;
 using System.Net.Http;
 using AdaptiveCards;
+using System.Collections.Generic;
 
 namespace Microsoft.Bot.Sample.SimpleEchoBot
 {
@@ -29,6 +30,20 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                 Weight = AdaptiveTextWeight.Bolder
             });
 
+            var choiceSet = new AdaptiveChoiceSetInput();
+            choiceSet.Choices.Add(
+                new AdaptiveChoice()
+                {
+                    Title = "Zuko",
+                    Value = "zuko"
+                });
+            choiceSet.Choices.Add(new AdaptiveChoice()
+            {
+                Title = "Buko",
+                Value = "buko"
+            });
+            card.Body.Add(choiceSet);
+
             Attachment attachment = new Attachment()
             {
                 ContentType = AdaptiveCard.ContentType,
@@ -37,8 +52,10 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
 
             var replyToConversation = context.MakeMessage();
             replyToConversation.Attachments.Add(attachment);
+            
             // return our reply to the user
-            await context.PostAsync(replyToConversation);
+            //await context.PostAsync(replyToConversation);
+            await context.PostAsync("Echo");
             context.Wait(MessageReceivedAsync);
 
         }
