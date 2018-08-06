@@ -57,10 +57,18 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
             // return our reply to the user
             //await context.PostAsync(replyToConversation);
             string json = LoadJson();
-            Console.WriteLine(json);
-            await context.PostAsync(json);
-            context.Wait(MessageReceivedAsync);
+            AdaptiveCardParseResult result = AdaptiveCard.FromJson(json);
+            AdaptiveCard card = result.Card;
+            Attachment attachment = new Attachment()
+            {
+                ContentType = AdaptiveCard.ContentType,
+                Content = card
+            };
 
+            var replyToConversation = context.MakeMessage();
+            replyToConversation.Attachments.Add(attachment);
+            await context.PostAsync(replyToConversation);
+            context.Wait(MessageReceivedAsync);
         }
 
         public async Task AfterResetAsync(IDialogContext context, IAwaitable<bool> argument)
