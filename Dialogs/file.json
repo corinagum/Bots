@@ -1,0 +1,39 @@
+{
+    "contentType": "application/vnd.microsoft.card.adaptive",
+    "content": {
+        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+        "type": "AdaptiveCard",
+        "version": "1.0",
+        "body": [
+            {
+                "type": "TextBlock",
+                "text": "{{title}}",
+                "weight": "bolder",
+                "size": "large"
+            },
+            {
+                "type": "TextBlock",
+                "text": "{{shortText}}",
+                "wrap": "true"
+            },
+            {
+                "type": "TextBlock",
+                "text": "Date: {{date}}",
+                "separator": "true",
+                "weight": "bolder"
+            }
+        ],
+        "actions": [
+            {
+                "type": "Action.OpenUrl",
+                "title": "{{More information}}",
+                "url": "{{Url}}"
+            },
+            {
+                "type": "Action.Submit",
+                "title": "{{Subscribe}}",
+                "data": "{{subscribesentence}}"
+            }
+        ]
+    }
+}

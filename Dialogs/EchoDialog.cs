@@ -6,6 +6,7 @@ using Microsoft.Bot.Builder.Dialogs;
 using System.Net.Http;
 using AdaptiveCards;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Microsoft.Bot.Sample.SimpleEchoBot
 {
@@ -21,41 +22,43 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
 
         public async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> argument)
         {
-            AdaptiveCard card = new AdaptiveCard();
+            // AdaptiveCard card = new AdaptiveCard();
 
-            card.Body.Add(new AdaptiveTextBlock()
-            {
-                Text = "Adaptive Card rendering test",
-                Size = AdaptiveTextSize.Large,
-                Weight = AdaptiveTextWeight.Bolder
-            });
+            // card.Body.Add(new AdaptiveTextBlock()
+            // {
+            //     Text = "Adaptive Card rendering test",
+            //     Size = AdaptiveTextSize.Large,
+            //     Weight = AdaptiveTextWeight.Bolder
+            // });
 
-            var choiceSet = new AdaptiveChoiceSetInput();
-            choiceSet.Choices.Add(
-                new AdaptiveChoice()
-                {
-                    Title = "Zuko",
-                    Value = "zuko"
-                });
-            choiceSet.Choices.Add(new AdaptiveChoice()
-            {
-                Title = "Buko",
-                Value = "buko"
-            });
-            card.Body.Add(choiceSet);
+            // var choiceSet = new AdaptiveChoiceSetInput();
+            // choiceSet.Choices.Add(
+            //     new AdaptiveChoice()
+            //     {
+            //         Title = "Zuko",
+            //         Value = "zuko"
+            //     });
+            // choiceSet.Choices.Add(new AdaptiveChoice()
+            // {
+            //     Title = "Buko",
+            //     Value = "buko"
+            // });
+            // card.Body.Add(choiceSet);
 
-            Attachment attachment = new Attachment()
-            {
-                ContentType = AdaptiveCard.ContentType,
-                Content = card
-            };
+            // Attachment attachment = new Attachment()
+            // {
+            //     ContentType = AdaptiveCard.ContentType,
+            //     Content = card
+            // };
 
-            var replyToConversation = context.MakeMessage();
-            replyToConversation.Attachments.Add(attachment);
-            
+            // var replyToConversation = context.MakeMessage();
+            // replyToConversation.Attachments.Add(attachment);
+
             // return our reply to the user
             //await context.PostAsync(replyToConversation);
-            await context.PostAsync("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+            string json = LoadJson();
+            Console.WriteLine(json);
+            await context.PostAsync(json);
             context.Wait(MessageReceivedAsync);
 
         }
@@ -75,5 +78,12 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
             context.Wait(MessageReceivedAsync);
         }
 
+        public string LoadJson() {
+            using (StreamReader r = new StreamReader("file.json"))
+            {
+                string json = r.ReadToEnd();
+                return json;
+            }
+        }
     }
 }
