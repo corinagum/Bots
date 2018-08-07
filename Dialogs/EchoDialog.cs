@@ -7,6 +7,7 @@ using System.Net.Http;
 using AdaptiveCards;
 using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json.Linq;
 
 namespace Microsoft.Bot.Sample.SimpleEchoBot
 {
@@ -57,20 +58,59 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
             //return our reply to the user
             await context.PostAsync(replyToConversation);
 
-            //string json = LoadJson();
-            //AdaptiveCardParseResult result = AdaptiveCard.FromJson(json);
+            string json = @"{
+    'contentType': 'application/vnd.microsoft.card.adaptive',
+    'content': {
+        '$schema': 'http://adaptivecards.io/schemas/adaptive-card.json',
+        'type': 'AdaptiveCard',
+        'version': '1.0',
+        'body': [
+            {
+                'type': 'TextBlock',
+                'text': '{{title}}',
+                'weight': 'bolder',
+                'size': 'large'
+            },
+            {
+                'type': 'TextBlock',
+                'text': '{{shortText}}',
+                'wrap': 'true'
+            },
+            {
+                'type': 'TextBlock',
+                'text': 'Date: {{date}}',
+                'separator': 'true',
+                'weight': 'bolder'
+            }
+        ],
+        'actions': [
+            {
+                'type': 'Action.OpenUrl',
+                'title': '{{More information}}',
+                'url': '{{Url}}'
+            },
+            {
+                'type': 'Action.Submit',
+                'title': '{{Subscribe}}',
+                'data': '{{subscribesentence}}'
+            }
+        ]
+    }
+}";
+            //JObject json = JObject.Parse(jsonString);
+            AdaptiveCardParseResult result = AdaptiveCard.FromJson(json);
 
-            //AdaptiveCard card = result.Card;
-            //Attachment attachment = new Attachment()
-            //{
-            //    ContentType = AdaptiveCard.ContentType,
-            //    Content = card
-            //};
+            AdaptiveCard card2 = result.Card;
+            Attachment attachment2 = new Attachment()
+            {
+                ContentType = AdaptiveCard.ContentType,
+                Content = card
+            };
 
-            //var replyToConversation = context.MakeMessage();
-            //replyToConversation.Attachments.Add(attachment);
-            //await context.PostAsync(replyToConversation);
-            //context.Wait(MessageReceivedAsync);
+            var replyToConversation2 = context.MakeMessage();
+            replyToConversation.Attachments.Add(attachment2);
+            await context.PostAsync(replyToConversation2);
+            context.Wait(MessageReceivedAsync);
         }
 
         public async Task AfterResetAsync(IDialogContext context, IAwaitable<bool> argument)
