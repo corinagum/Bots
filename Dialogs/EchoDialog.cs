@@ -54,7 +54,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
             var replyToConversation = context.MakeMessage();
             replyToConversation.Attachments.Add(attachment);
 
-            return our reply to the user
+            //return our reply to the user
             await context.PostAsync(replyToConversation);
 
             //string json = LoadJson();
