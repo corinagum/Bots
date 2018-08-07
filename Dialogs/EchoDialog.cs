@@ -22,43 +22,29 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
 
         public async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> argument)
         {
-            // AdaptiveCard card = new AdaptiveCard();
+            AdaptiveCard card = new AdaptiveCard();
 
-            // card.Body.Add(new AdaptiveTextBlock()
-            // {
-            //     Text = "Adaptive Card rendering test",
-            //     Size = AdaptiveTextSize.Large,
-            //     Weight = AdaptiveTextWeight.Bolder
-            // });
+            card.Body.Add(new AdaptiveTextBlock()
+            {
+                Text = "Adaptive Card rendering test",
+                Size = AdaptiveTextSize.Large,
+                Weight = AdaptiveTextWeight.Bolder
+            });
 
-            // var choiceSet = new AdaptiveChoiceSetInput();
-            // choiceSet.Choices.Add(
-            //     new AdaptiveChoice()
-            //     {
-            //         Title = "Zuko",
-            //         Value = "zuko"
-            //     });
-            // choiceSet.Choices.Add(new AdaptiveChoice()
-            // {
-            //     Title = "Buko",
-            //     Value = "buko"
-            // });
-            // card.Body.Add(choiceSet);
+            var choiceSet = new AdaptiveChoiceSetInput();
+            choiceSet.Choices.Add(
+                new AdaptiveChoice()
+                {
+                    Title = "Zuko",
+                    Value = "zuko"
+                });
+            choiceSet.Choices.Add(new AdaptiveChoice()
+            {
+                Title = "Buko",
+                Value = "buko"
+            });
+            card.Body.Add(choiceSet);
 
-            // Attachment attachment = new Attachment()
-            // {
-            //     ContentType = AdaptiveCard.ContentType,
-            //     Content = card
-            // };
-
-            // var replyToConversation = context.MakeMessage();
-            // replyToConversation.Attachments.Add(attachment);
-
-            // return our reply to the user
-            //await context.PostAsync(replyToConversation);
-            string json = LoadJson();
-            AdaptiveCardParseResult result = AdaptiveCard.FromJson(json);
-            AdaptiveCard card = result.Card;
             Attachment attachment = new Attachment()
             {
                 ContentType = AdaptiveCard.ContentType,
@@ -67,8 +53,24 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
 
             var replyToConversation = context.MakeMessage();
             replyToConversation.Attachments.Add(attachment);
+
+            return our reply to the user
             await context.PostAsync(replyToConversation);
-            context.Wait(MessageReceivedAsync);
+
+            //string json = LoadJson();
+            //AdaptiveCardParseResult result = AdaptiveCard.FromJson(json);
+
+            //AdaptiveCard card = result.Card;
+            //Attachment attachment = new Attachment()
+            //{
+            //    ContentType = AdaptiveCard.ContentType,
+            //    Content = card
+            //};
+
+            //var replyToConversation = context.MakeMessage();
+            //replyToConversation.Attachments.Add(attachment);
+            //await context.PostAsync(replyToConversation);
+            //context.Wait(MessageReceivedAsync);
         }
 
         public async Task AfterResetAsync(IDialogContext context, IAwaitable<bool> argument)
