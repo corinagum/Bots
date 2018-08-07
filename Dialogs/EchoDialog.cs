@@ -59,45 +59,41 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
             await context.PostAsync(replyToConversation);
 
 //            string json = @"{
-//    'contentType': 'application/vnd.microsoft.card.adaptive',
-//    'content': {
-//        '$schema': 'http://adaptivecards.io/schemas/adaptive-card.json',
-//        'type': 'AdaptiveCard',
-//        'version': '1.0',
-//        'body': [
-//            {
-//                'type': 'TextBlock',
-//                'text': '{{title}}',
-//                'weight': 'bolder',
-//                'size': 'large'
-//            },
-//            {
-//                'type': 'TextBlock',
-//                'text': '{{shortText}}',
-//                'wrap': 'true'
-//            },
-//            {
-//                'type': 'TextBlock',
-//                'text': 'Date: {{date}}',
-//                'separator': 'true',
-//                'weight': 'bolder'
-//            }
-//        ],
-//        'actions': [
-//            {
-//                'type': 'Action.OpenUrl',
-//                'title': '{{More information}}',
-//                'url': '{{Url}}'
-//            },
-//            {
-//                'type': 'Action.Submit',
-//                'title': '{{Subscribe}}',
-//                'data': '{{subscribesentence}}'
-//            }
-//        ]
-//    }
+//    ""$schema"": ""http://adaptivecards.io/schemas/adaptive-card.json"",
+//    ""type"": ""AdaptiveCard"",
+//    ""version"": ""1.0"",
+//    ""body"": [
+//        {
+//            ""type"": ""TextBlock"",
+//            ""text"": ""{{title}}"",
+//            ""weight"": ""bolder"",
+//            ""size"": ""large""
+//        },
+//        {
+//            ""type"": ""TextBlock"",
+//            ""text"": ""{{shortText}}"",
+//            ""wrap"": ""true""
+//        },
+//        {
+//            ""type"": ""TextBlock"",
+//            ""text"": ""Date: {{date}}"",
+//            ""separator"": ""true"",
+//            ""weight"": ""bolder""
+//        }
+//    ],
+//    ""actions"": [
+//        {
+//            ""type"": ""Action.OpenUrl"",
+//            ""title"": ""{{More information}}"",
+//            ""url"": ""{{Url}}""
+//        },
+//        {
+//            ""type"": ""Action.Submit"",
+//            ""title"": ""{{Subscribe}}"",
+//            ""data"": ""{{subscribesentence}}""
+//        }
+//    ]
 //}";
-//            //JObject json = JObject.Parse(jsonString);
 //            AdaptiveCardParseResult result = AdaptiveCard.FromJson(json);
 
 //            AdaptiveCard card2 = result.Card;
@@ -126,14 +122,6 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
                 await context.PostAsync("Did not reset count.");
             }
             context.Wait(MessageReceivedAsync);
-        }
-
-        public string LoadJson() {
-            using (StreamReader r = new StreamReader("file.json"))
-            {
-                string json = r.ReadToEnd();
-                return json;
-            }
         }
     }
 }
