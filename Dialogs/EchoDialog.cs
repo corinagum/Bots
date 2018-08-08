@@ -65,18 +65,18 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
     ""body"": [
         {
             ""type"": ""TextBlock"",
-            ""text"": ""{{title}}"",
+            ""text"": ""title"",
             ""weight"": ""bolder"",
             ""size"": ""large""
         },
         {
             ""type"": ""TextBlock"",
-            ""text"": ""{{shortText}}"",
+            ""text"": ""shortText"",
             ""wrap"": ""true""
         },
         {
             ""type"": ""TextBlock"",
-            ""text"": ""Date: {{date}}"",
+            ""text"": ""Date: date"",
             ""separator"": ""true"",
             ""weight"": ""bolder""
         }
@@ -84,13 +84,13 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
     ""actions"": [
         {
             ""type"": ""Action.OpenUrl"",
-            ""title"": ""{{More information}}"",
-            ""url"": ""{{Url}}""
+            ""title"": ""More information"",
+            ""url"": ""Url""
         },
         {
             ""type"": ""Action.Submit"",
-            ""title"": ""{{Subscribe}}"",
-            ""data"": ""{{subscribesentence}}""
+            ""title"": ""Subscribe"",
+            ""data"": ""subscribesentence""
         }
     ]
 }";
@@ -100,11 +100,11 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
             Attachment attachment2 = new Attachment()
             {
                 ContentType = AdaptiveCard.ContentType,
-                Content = card
+                Content = card2
             };
 
             var replyToConversation2 = context.MakeMessage();
-            replyToConversation.Attachments.Add(attachment2);
+            replyToConversation2.Attachments.Add(attachment2);
             await context.PostAsync(replyToConversation2);
             context.Wait(MessageReceivedAsync);
         }
