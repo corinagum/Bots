@@ -10,8 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "botbuilder": "^3.13.1",
+    "botbuilder": "^4.0.0-preview1.2",
+    "botbuilder-ai": "^4.0.0-preview1.2",
     "botbuilder-azure": "^3.0.4",
+    "dotenv": "^6.0.0",
     "restify": "^5.0.0"
   },
   "devDependencies": {
