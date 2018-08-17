@@ -1,0 +1,122 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.bottomCorner {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 300px;
+    width: 450px;
+    border-radius: 2px;
+    border: 5px #666 solid;
+}
+
+.wc-header {
+    /*background: #00204f url('/dist/img/icons/chat-bot-logo.jpg') no-repeat 12px 8px;*/
+}
+
+.wc-chatview-panel {
+    bottom: 80px !important;
+    right: 0 !important;
+    border: 1px solid #DDD !important;
+    height: 500px !important;
+    width: 420px !important;
+    left: auto !important;
+    top: auto !important;
+    background-color: #fff !important;
+    border-radius: 5px;
+}
+
+.chatBot-header {
+    color: #fff;
+    font-family: 'HPSimplified-Regular';
+    padding: 0px 0px 0px 35px;
+    font-size: 13px;
+}
+/*.wc-message-from > span, .wc-message-from-me > span {
+                color: transparent;
+            }
+
+            .wc-message-from-bot > span {
+                color: #666 !important;
+            }*/
+.wc-message-from-me svg.wc-message-callout path {
+    fill: #99d5ef !important;
+}
+
+.wc-message-from-me .wc-message-content {
+    background-color: #99d5ef !important;
+    color: #333 !important;
+    font-family: 'HPSimplified-Regular';
+    padding: 8px 8px 8px 12px;
+    box-shadow: none;
+}
+
+.wc-message-group-content, .wc-message-groups {
+    background: #fff;
+}
+
+.wc-textbox {
+    left: 10px !important;
+}
+
+.wc-chatview-panel {
+    z-index: 10;
+}
+
+.i-can-help-you {
+    float: right;
+    font-size: 10px;
+    padding: 6px 15px 0px 0px;
+}
+
+.wc-textbox {
+    left: 10px !important;
+}
+
+.close-bot {
+    float: right;
+    color: #fff;
+    margin: -2px -12px 0px 5px;
+    font-family: 'HPSimplified-Regular';
+    cursor: pointer;
+}
+
+.wc-send {
+    background: url('/images/arrow-icon-bot.png') no-repeat center center;
+    width: 40px;
+    height: 50px;
+    margin: 0px;
+}
+
+    .wc-send * {
+        display: none;
+    }
+
+.wc-console {
+    border: none;
+    border-top: 1px solid #dbdee1;
+    background: #f2f2f2;
+}
+
+    .wc-console svg {
+        margin: 15px 0px 0px 11px;
+    }
+
+    .wc-textbox {
+        margin-left: 40px;
+    }
+
+    .wc-console input[type=text] {
+        background: none;
+        height: 92%;
+    }
+
+.wc-carousel li .wc-adaptive-card p {
+    min-height: auto;
+    min-height: initial;
+}
