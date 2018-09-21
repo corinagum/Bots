@@ -1,0 +1,11 @@
+C:\Users\v-corgum\Documents\v-corgumIgniteBB1-src\bin\Debug\netcoreapp2.0\EchoBotWithCounter.deps.json
+C:\Users\v-corgum\Documents\v-corgumIgniteBB1-src\bin\Debug\netcoreapp2.0\EchoBotWithCounter.runtimeconfig.json
+C:\Users\v-corgum\Documents\v-corgumIgniteBB1-src\bin\Debug\netcoreapp2.0\EchoBotWithCounter.runtimeconfig.dev.json
+C:\Users\v-corgum\Documents\v-corgumIgniteBB1-src\bin\Debug\netcoreapp2.0\EchoBotWithCounter.dll
+C:\Users\v-corgum\Documents\v-corgumIgniteBB1-src\bin\Debug\netcoreapp2.0\EchoBotWithCounter.pdb
+C:\Users\v-corgum\Documents\v-corgumIgniteBB1-src\obj\Debug\netcoreapp2.0\EchoBotWithCounter.csprojAssemblyReference.cache
+C:\Users\v-corgum\Documents\v-corgumIgniteBB1-src\obj\Debug\netcoreapp2.0\EchoBotWithCounter.csproj.CoreCompileInputs.cache
+C:\Users\v-corgum\Documents\v-corgumIgniteBB1-src\obj\Debug\netcoreapp2.0\EchoBotWithCounter.AssemblyInfoInputs.cache
+C:\Users\v-corgum\Documents\v-corgumIgniteBB1-src\obj\Debug\netcoreapp2.0\EchoBotWithCounter.AssemblyInfo.cs
+C:\Users\v-corgum\Documents\v-corgumIgniteBB1-src\obj\Debug\netcoreapp2.0\EchoBotWithCounter.dll
+C:\Users\v-corgum\Documents\v-corgumIgniteBB1-src\obj\Debug\netcoreapp2.0\EchoBotWithCounter.pdb
