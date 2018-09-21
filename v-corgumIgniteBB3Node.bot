@@ -1,0 +1,52 @@
+{
+  "name": "v-corgumIgniteBB3Node",
+  "padlock": "RDi7iHap7/FKAP6VCg8LLA==!kKmVT240s+1Huh40xWJnqhyAIdiOd6TieNMimpVbSlJY2hQG6V66pChEIu/Xof7Y",
+  "version": "2.0",
+  "services": [
+    {
+      "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      "subscriptionId": "0389857f-2464-451b-ac83-5f54d565b1a7",
+      "resourceGroup": "v-corgumIgniteBB",
+      "serviceName": "v-corgumIgniteBB3Node",
+      "type": "abs",
+      "name": "v-corgumIgniteBB3Node",
+      "id": "1"
+    },
+    {
+      "connectionString": "TJENkqlgw9plDZJgx/q1DQ==!2ScmsvPKeFiwGigS1H453ozwuiuIpOVzgBcZeloGNoKqwTnnO7s4YGHKIMEwrSFp6udYNcTuje7w04wFSPEcDmpwaoUpw2WWmu+/w+kp44cYqRCsKVCnALNQxB5dzXP4OsXMvWgQXlE0ykIxC3HcQCpRHHDbNAqbPmeQHQUmY2myHYocORn/aBdsWl1Meph5eZzjjpn82xGvqj1y/sCLb4qrQDKNzj+Y8J9DHmTV/+w=",
+      "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      "subscriptionId": "0389857f-2464-451b-ac83-5f54d565b1a7",
+      "resourceGroup": "v-corgumIgniteBB",
+      "serviceName": "vcorgumignitebb3node8a73",
+      "type": "blob",
+      "id": "2"
+    },
+    {
+      "appId": "",
+      "appPassword": "",
+      "endpoint": "http://localhost:3978/api/messages",
+      "type": "endpoint",
+      "name": "development",
+      "id": "3"
+    },
+    {
+      "appId": "cf57581e-e429-478f-9c05-f4de78807ec9",
+      "appPassword": "uobAAlugH/JZfvZ+N9atiw==!QoI3KfeaM6oJ5TjgNnCoL2r5lbM0Z4cOe9sc3T7xOFE=",
+      "endpoint": "https://v-corgumignitebb3node.azurewebsites.net/api/messages",
+      "type": "endpoint",
+      "name": "production",
+      "id": "4"
+    },
+    {
+      "instrumentationKey": "Qjp7AV3OfS+8fVxa5oi3LA==!76tV6Lb3DwB81AxXyQ6JdWLSHiq4s/iDKJUgfCTSlsNOVMSP2oH0QEiLLE07aec/",
+      "applicationId": "087c684b-890b-4e4d-bd7e-fadbc5cffd33",
+      "apiKeys": {},
+      "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      "subscriptionId": "0389857f-2464-451b-ac83-5f54d565b1a7",
+      "resourceGroup": "v-corgumIgniteBB",
+      "serviceName": "v-corgumIgniteBB3Node5a4pht",
+      "type": "appInsights",
+      "id": "5"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+    "name": "IgniteNode",
+    "services": [
+        {
+            "type": "endpoint",
+            "name": "IgniteNode",
+            "endpoint": "http://localhost:3978/api/messages",
+            "appId": "",
+            "appPassword": "",
+            "id": "201"
+        }
+    ],
+    "padlock": "DvTJq8Tn6Y5zWpwThOVmfg==!vdFVhTmbOpdMml7vQOEo0Rwl9Sk04lqGQB6vkl9eN6NuTB3+YdRR0AT9Wxd6q3Vf",
+    "version": "2.0"
+}
