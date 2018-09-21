@@ -1,0 +1,60 @@
+{
+  "name": "v-corgumIgniteBB4Node",
+  "padlock": "b8n6H8ppNhpGUvusClsmvA==!w6vYr/ZgUJNNEc2sBGqGFiewct/+3hWlq97UpuWnuXXmKAAMdN0zMxjWpYEDKQ9V",
+  "version": "2.0",
+  "services": [
+    {
+      "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      "subscriptionId": "0389857f-2464-451b-ac83-5f54d565b1a7",
+      "resourceGroup": "v-corgumIgniteBB",
+      "serviceName": "v-corgumIgniteBB4Node",
+      "type": "abs",
+      "name": "v-corgumIgniteBB4Node",
+      "id": "1"
+    },
+    {
+      "connectionString": "QlyA+Xt5tLIjg5eIgTCcyw==!a2rlJccm5rQMHX97Nl/+nd/717BA04e+G9J/Wp3gdOPuxIt/cG3OISlCcysJZDbSzsbE0rCo2yQ3nH58IRkF9/anTO4ZhAPEQIWKxneM1CEySF36MZTf2gD9X1k1T8aDTda9iBLSjkJT3joVxTZfc6Oq3Tf0oFk01ZxQy9I5eJb4DJ8Fvo1FvatzoutwPc+Rg9kdqgDHMC+iOX6Oy86EFPm5uOTA7Ce72enzRyjcfVs=",
+      "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      "subscriptionId": "0389857f-2464-451b-ac83-5f54d565b1a7",
+      "resourceGroup": "v-corgumIgniteBB",
+      "serviceName": "vcorgumignitebb4node8809",
+      "type": "blob",
+      "id": "2"
+    },
+    {
+      "appId": "",
+      "appPassword": "",
+      "endpoint": "http://localhost:3978/api/messages",
+      "type": "endpoint",
+      "name": "development",
+      "id": "3"
+    },
+    {
+      "appId": "24ee1cac-ed3d-4cd4-a061-80fc37e9ff7c",
+      "appPassword": "iR79wwpGT6a7zgRKsBFVGw==!VUetAZuxKNoi0hVENqUvGgE4JQvp4bA/DeO0KRUc9Nc=",
+      "endpoint": "https://v-corgumignitebb4node.azurewebsites.net/api/messages",
+      "type": "endpoint",
+      "name": "production",
+      "id": "4"
+    },
+    {
+      "instrumentationKey": "u17v/QxVBqYpukPIlYShLA==!fV2YJ0PVTONpa2J7mfgMMfUJ8Z/7fi5wXSfUP5kigjkK+U/kFj04bBIL66alxX8F",
+      "applicationId": "b211ac8a-bf92-4985-8c6b-be79e21c68dc",
+      "apiKeys": {},
+      "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      "subscriptionId": "0389857f-2464-451b-ac83-5f54d565b1a7",
+      "resourceGroup": "v-corgumIgniteBB",
+      "serviceName": "v-corgumIgniteBB4Node5a4pht",
+      "type": "appInsights",
+      "id": "5"
+    },
+    {
+      "appId": "36b5ce1d-9947-4cbb-8cff-240a646cb23f",
+      "authoringKey": "pT+HgUVDlWa92Y3V4ZkSjg==!oC1UobZze5uF7/WON5iaO54o/zIbMhjp1T10DxzKd0H/4RZc5q/CPYSNwJcEeBgl",
+      "region": "westus",
+      "type": "luis",
+      "name": "BasicBotLuisApplication",
+      "id": "6"
+    }
+  ]
+}
