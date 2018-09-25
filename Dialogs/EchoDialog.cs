@@ -34,10 +34,10 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
             }
             else
             {
-				Activity reply = activity.CreateReply();
-				reply.Type = ActivityTypes.Typing;
-				reply.Text = null;
-				await context.PostAsync(reply);
+				//Activity reply = activity.CreateReply();
+				//reply.Type = ActivityTypes.Typing;
+				//reply.Text = null;
+				//await context.PostAsync(reply);
 				//Thread.Sleep(60000);
 				await context.PostAsync($"{this.count++}: You said {message.Text}");
                 context.Wait(MessageReceivedAsync);
