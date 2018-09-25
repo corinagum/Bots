@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Bot.Connector;
 using Microsoft.Bot.Builder.Dialogs;
 using System.Net.Http;
-
+using System.Threading;
 
 namespace Microsoft.Bot.Sample.SimpleEchoBot
 {
@@ -33,6 +33,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
             }
             else
             {
+				Thread.Sleep(60000);
                 await context.PostAsync($"{this.count++}: You said {message.Text}");
                 context.Wait(MessageReceivedAsync);
             }
