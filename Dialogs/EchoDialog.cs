@@ -20,6 +20,7 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
 
         public async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> argument)
         {
+			var activity = new Activity();
             var message = await argument;
 
             if (message.Text == "reset")
@@ -33,6 +34,8 @@ namespace Microsoft.Bot.Sample.SimpleEchoBot
             }
             else
             {
+				Activity reply = activity.CreateReply();
+				reply.Type = ActivityTypes.Typing;
 				Thread.Sleep(60000);
                 await context.PostAsync($"{this.count++}: You said {message.Text}");
                 context.Wait(MessageReceivedAsync);
