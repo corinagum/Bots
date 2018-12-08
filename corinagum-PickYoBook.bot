@@ -1,0 +1,41 @@
+{
+  "name": "corinagum-PickYoBook",
+  "padlock": "kDJTGdLxALTEjpRG5/c3SQ==!57N0ZN4b1zmtZ+Lys7NoPFxwB043pLezrN8v5BSEzGS8hxpMaAb7NmclLxtskO7C",
+  "version": "2.0",
+  "services": [
+    {
+      "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      "subscriptionId": "0389857f-2464-451b-ac83-5f54d565b1a7",
+      "resourceGroup": "corinagum-PickYoBook",
+      "serviceName": "corinagum-PickYoBook",
+      "type": "abs",
+      "name": "corinagum-PickYoBook",
+      "id": "1"
+    },
+    {
+      "connectionString": "GLtcs45CZuQY2xG57591yA==!NELeW43PjDu8E5Uwdg+usJ5KDaFXjges32A6WM8ipV0KdmWHAsjbS/7tgylaXD8OIhktTBYw8eKPG5XWUqC4Ny1vT5Oqdjd8nqxcyv41tMW4WuI5w4QD9ZIJWh2tsDSldDR3DtTZqR4q9/e/KOPQFRLuhM7zRDuXTzI6B5lniIKqG6m89ihUn76WG00zyYhYG/V70tal7s728IW1KH0yNmmZekr/RWuVtPMt7kn08DM=",
+      "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      "subscriptionId": "0389857f-2464-451b-ac83-5f54d565b1a7",
+      "resourceGroup": "corinagum-PickYoBook",
+      "serviceName": "corinagumpickyobookb649",
+      "type": "blob",
+      "id": "2"
+    },
+    {
+      "appId": "",
+      "appPassword": "",
+      "endpoint": "http://localhost:3978/api/messages",
+      "type": "endpoint",
+      "name": "development",
+      "id": "3"
+    },
+    {
+      "appId": "194832cc-8a5a-41af-9cde-cfbb4b4ff359",
+      "appPassword": "w8veWY47LW6Bt+0KsxUR4Q==!ARJei3yTu5zCqTKJvGPrwMk0mSrwGiJi6MQcWpF9VaE=",
+      "endpoint": "https://corinagum-pickyobook.azurewebsites.net/api/messages",
+      "type": "endpoint",
+      "name": "production",
+      "id": "4"
+    }
+  ]
+}
