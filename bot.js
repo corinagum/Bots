@@ -29,26 +29,23 @@ class EchoBot {
         // Handle message activity type. User's responses via text or speech or card interactions flow back to the bot as Message activity.
         // Message activities may contain text, speech, interactive cards, and binary or unknown attachments.
         // see https://aka.ms/about-bot-activity-message to learn more about the message and other activity types
-        if (turnContext.activity.type === ActivityTypes.Message) {
-            // read from state.
-            let count = await this.countProperty.get(turnContext);
-            count = count === undefined ? 1 : ++count;
-            await turnContext.sendActivities(
-                [
-                    { type: 'typing' },
-                    { type: 'event' },
-                    { type: 'event', value: "my event args" },
-                    { type: 'customEvent' },
-                    { type: 'customEvent', value: "cool stuff" },
-                    { type: 'message', text: 'My message' }
-                ]
-            );
-            // increment and set turn counter.
-            await this.countProperty.set(turnContext, count);
-        } else {
-            // Generic handler for all other activity types.
-            await turnContext.sendActivity(`[${ turnContext.activity.type } event detected]`);
-        }
+
+        // read from state.
+        let count = await this.countProperty.get(turnContext);
+        count = count === undefined ? 1 : ++count;
+        await turnContext.sendActivities(
+            [
+                { type: 'typing' },
+                { type: 'event' },
+                { type: 'event', value: "my event args" },
+                { type: 'customEvent' },
+                { type: 'customEvent', value: "cool stuff" },
+                { type: 'message', text: 'My message' }
+            ]
+        );
+        // increment and set turn counter.
+        await this.countProperty.set(turnContext, count);
+
         // Save state changes
         await this.conversationState.saveChanges(turnContext);
     }
