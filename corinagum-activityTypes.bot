@@ -1,0 +1,41 @@
+{
+  "name": "corinagum-activityTypes",
+  "padlock": "i7xoTsAsQgis8R+CzaOGpA==!M5dJxbaKF5oLfCOIrWPwcGfaXSE6Znf4OSPEj/mT9Lx1o7FPFAcWGSFd4/yrcSuX",
+  "version": "2.0",
+  "services": [
+    {
+      "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      "subscriptionId": "0389857f-2464-451b-ac83-5f54d565b1a7",
+      "resourceGroup": "corinagum-activitytypes",
+      "serviceName": "corinagum-activityTypes",
+      "type": "abs",
+      "name": "corinagum-activityTypes",
+      "id": "1"
+    },
+    {
+      "connectionString": "FXBeUTxHQYwRWzmFjFIW4A==!7oLDFUawNCa+7HW9FJ9gaZgIh88KAEbO44BI4+kxx99Mb0j8nilov2Qh4P1DnM5RVQ2zdGhsov+hCCILtNp1sfPJsdVP/iIO4wFv7VbY/DLtIAY1cZFw5AFdKxm3f1eoRDIp1lbQUe3GpHsxQbD3z8vlF8MJY+5FGmfQhyu6UHvbVdyQ+VW752ULf76QqGMSsk/a7CaRjiEtZWaB4po/CNUutYGDG3kzeDFEIOSJARY=",
+      "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      "subscriptionId": "0389857f-2464-451b-ac83-5f54d565b1a7",
+      "resourceGroup": "corinagum-activitytypes",
+      "serviceName": "corinagumactivitytypesa0",
+      "type": "blob",
+      "id": "2"
+    },
+    {
+      "appId": "",
+      "appPassword": "",
+      "endpoint": "http://localhost:3978/api/messages",
+      "type": "endpoint",
+      "name": "development",
+      "id": "3"
+    },
+    {
+      "appId": "9812cb68-c0c6-47fd-8e16-40d91f9bea71",
+      "appPassword": "GfpJ/e72c0it6hN6YySSvA==!cLxBL3hXBHQZf2BggDrFSpiyrJTFytz+gNyg8uvZj+4=",
+      "endpoint": "https://corinagum-activitytypes.azurewebsites.net/api/messages",
+      "type": "endpoint",
+      "name": "production",
+      "id": "4"
+    }
+  ]
+}
