@@ -39,7 +39,7 @@ bot.set('storage', tableStorage);
 var json = {
     "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
     "type": "AdaptiveCard",
-    "fallbackText": "<img src=/ onerror=javascript:alert(\"FALLBACK RAWR\")>",
+    "fallbackText": "<img src=/ onerror=javascript:alert('FALLBACK RAWR')>",
     "version": "1.2",
     "body": [
       {
