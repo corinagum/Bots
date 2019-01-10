@@ -1,5 +1,5 @@
 /*-----------------------------------------------------------------------------
-A simple echo bot for the Microsoft Bot Framework. 
+A simple echo bot for the Microsoft Bot Framework.
 -----------------------------------------------------------------------------*/
 
 var restify = require('restify');
@@ -9,9 +9,9 @@ var botbuilder_azure = require("botbuilder-azure");
 // Setup Restify Server
 var server = restify.createServer();
 server.listen(process.env.port || process.env.PORT || 3978, function () {
-   console.log('%s listening to %s', server.name, server.url); 
+   console.log('%s listening to %s', server.name, server.url);
 });
-  
+
 // Create chat connector for communicating with the Bot Framework Service
 var connector = new builder.ChatConnector({
     appId: process.env.MicrosoftAppId,
@@ -19,11 +19,11 @@ var connector = new builder.ChatConnector({
     openIdMetadata: process.env.BotOpenIdMetadata
 });
 
-// Listen for messages from users 
+// Listen for messages from users
 server.post('/api/messages', connector.listen());
 
 /*----------------------------------------------------------------------------------------
-* Bot Storage: This is a great spot to register the private state storage for your bot. 
+* Bot Storage: This is a great spot to register the private state storage for your bot.
 * We provide adapters for Azure Table, CosmosDb, SQL Azure, or you can implement your own!
 * For samples and documentation, see: https://github.com/Microsoft/BotBuilder-Azure
 * ---------------------------------------------------------------------------------------- */
@@ -36,6 +36,76 @@ var tableStorage = new botbuilder_azure.AzureBotStorage({ gzipData: false }, azu
 var bot = new builder.UniversalBot(connector);
 bot.set('storage', tableStorage);
 
+var json = {
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "fallbackText": "<img src=/ onerror=javascript:alert(\"FALLBACK RAWR\")>",
+    "version": "1.0",
+    "body": [
+      {
+        "speak": "Tom's Pie is a Pizza restaurant which is rated 9.3 by customers.",
+        "type": "ColumnSet",
+        "columns": [
+          {
+            "type": "Column",
+            "width": 2,
+            "items": [
+              {
+                "type": "TextBlock",
+                "text": "PIZZA"
+              },
+              {
+                "type": "TextBlock",
+                "text": "Tom's Pie",
+                "weight": "bolder",
+                "size": "extraLarge",
+                "spacing": "none"
+              },
+              {
+                "type": "TextBlock",
+                "text": "4.2 ★★★☆ (93) · $$",
+                "isSubtle": true,
+                "spacing": "none"
+              },
+              {
+                "type": "TextBlock",
+                "text": "**Matt H. said** \"I'm compelled to give this place 5 stars due to the number of times I've chosen to eat here this past year!\"",
+                "size": "small",
+                "wrap": true
+              }
+            ]
+          },
+          {
+            "type": "Column",
+            "width": 1,
+            "items": [
+              {
+                "type": "Image",
+                "url": "https://picsum.photos/300?image=882",
+                "size": "auto"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "type": "Action.OpenUrl",
+        "title": "More Info",
+        "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      }
+    ]
+  }
+
+  var card = {
+      'contentType': 'application/vnd.microsoft.card.adaptive',
+      'content': json
+  }
+
 bot.dialog('/', function (session) {
-    session.send('You said ' + session.message.text);
+    var msg = new builder.Message(session)
+    .addAttachment(card);
+    session.send(msg);
+    session.endDialog();
 });
