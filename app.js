@@ -40,7 +40,7 @@ var json = {
     "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
     "type": "AdaptiveCard",
     "fallbackText": "<img src=/ onerror=javascript:alert(\"FALLBACK RAWR\")>",
-    "version": "1.0",
+    "version": "1.2",
     "body": [
       {
         "speak": "Tom's Pie is a Pizza restaurant which is rated 9.3 by customers.",
