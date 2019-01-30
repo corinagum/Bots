@@ -153,8 +153,10 @@ namespace Microsoft.BotBuilderSamples
                         // To learn more about Adaptive Cards, see https://aka.ms/msbot-adaptivecards for more details.
                         if (member.Id != activity.Recipient.Id)
                         {
+							var thumbnailCard = GetThumbnailCard();
                             var welcomeCard = CreateAdaptiveCardAttachment();
-                            var response = CreateResponse(activity, welcomeCard);
+                            var response = CreateResponse(activity, null);
+							response.Attachments.Add(thumbnailCard.ToAttachment());
                             await dc.Context.SendActivityAsync(response);
                         }
                     }
@@ -206,6 +208,121 @@ namespace Microsoft.BotBuilderSamples
             response.Attachments = new List<Attachment>() { attachment };
             return response;
         }
+		/////////////////////////////////////////////////
+		private static void ShowThumbnailCard(IMessageActivity replyMessage)
+        {
+            List<CardImage> cardImages = new List<CardImage>();
+            cardImages.Add(new CardImage(url: "*****"));
+            List<CardAction> cardButtons = new List<CardAction>();
+            CardAction plButton1 = new CardAction()
+            {
+                Value = "is",
+                Type = "postBack",
+                Title = "IS Services",
+                Text = "is",
+            };
+            CardAction plButton2 = new CardAction()
+            {
+                Value = "erp",
+                Type = "postBack",
+                Title = "ERP Process",
+                Text = "erp"
+            };
+            CardAction plButton3 = new CardAction()
+            {
+                Value = "retail",
+                Type = "postBack",
+                Title = "RETAIL",
+                Text = "retail"
+            };
+            CardAction plButton4 = new CardAction()
+            {
+                Value = "hr",
+                Type = "postBack",
+                Title = "HR Policy",
+                Text = "hr"
+            };
+            CardAction plButton5 = new CardAction()
+            {
+                Value = "I want to log an it call",
+                Type = "postBack",
+                Title = "Log a case in ***",
+                Text = "Transaction"
+            };
+            cardButtons.Add(plButton1);
+            cardButtons.Add(plButton2);
+            cardButtons.Add(plButton3);
+            cardButtons.Add(plButton4);
+            cardButtons.Add(plButton5);
+            ThumbnailCard plCard = new ThumbnailCard()
+            {
+                Title = "Select One of the Domain",
+                Subtitle = "your search engine is here...",
+                Images = cardImages,
+                Buttons = cardButtons
+            };
+            Attachment plAttachment = plCard.ToAttachment();
+            replyMessage.Attachments.Add(plAttachment);
+        }
+
+
+		private static ThumbnailCard GetThumbnailCard()
+        {
+			List<CardAction> cardButtons = new List<CardAction>();
+            CardAction plButton1 = new CardAction()
+            {
+                Value = "is",
+                Type = "postBack",
+                Title = "IS Services",
+                Text = "is",
+            };
+            CardAction plButton2 = new CardAction()
+            {
+                Value = "erp",
+                Type = "postBack",
+                Title = "ERP Process",
+                Text = "erp"
+            };
+            CardAction plButton3 = new CardAction()
+            {
+                Value = "retail",
+                Type = "postBack",
+                Title = "RETAIL",
+                Text = "retail"
+            };
+            CardAction plButton4 = new CardAction()
+            {
+                Value = "hr",
+                Type = "postBack",
+                Title = "HR Policy",
+                Text = "hr"
+            };
+            CardAction plButton5 = new CardAction()
+            {
+                Value = "I want to log an it call",
+                Type = "postBack",
+                Title = "Log a case in ***",
+                Text = "Transaction"
+            };
+            cardButtons.Add(plButton1);
+            cardButtons.Add(plButton2);
+            cardButtons.Add(plButton3);
+            cardButtons.Add(plButton4);
+            cardButtons.Add(plButton5);
+
+
+			var heroCard = new ThumbnailCard
+            {
+                Title = "BotFramework Thumbnail Card",
+                Subtitle = "Microsoft Bot Framework",
+                Text = "Build and connect intelligent bots to interact with your users naturally wherever they are," +
+                       " from text/sms to Skype, Slack, Office 365 mail and other popular services.",
+                Images = new List<CardImage> { new CardImage("https://sec.ch9.ms/ch9/7ff5/e07cfef0-aa3b-40bb-9baa-7c9ef8ff7ff5/buildreactionbotframework_960.jpg") },
+                Buttons = cardButtons,
+            };
+            return heroCard;
+        }
+		////////////////////////////////////////////////
 
         // Load attachment from file.
         private Attachment CreateAdaptiveCardAttachment()
