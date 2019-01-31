@@ -77,94 +77,11 @@ namespace Microsoft.BotBuilderSamples
             // Create a dialog context
             var dc = await Dialogs.CreateContextAsync(turnContext);
 
-            if (activity.Type == ActivityTypes.Message)
-            {
-                // Perform a call to LUIS to retrieve results for the current activity message.
-                var luisResults = await _services.LuisServices[LuisConfiguration].RecognizeAsync(dc.Context, cancellationToken);
+			var thumbnailCard = GetThumbnailCard();
+            var response = CreateResponse(activity, null);
+			response.Attachments.Add(thumbnailCard.ToAttachment());
 
-                // If any entities were updated, treat as interruption.
-                // For example, "no my name is tony" will manifest as an update of the name to be "tony".
-                var topScoringIntent = luisResults?.GetTopScoringIntent();
-
-                var topIntent = topScoringIntent.Value.intent;
-
-                // update greeting state with any entities captured
-                await UpdateGreetingState(luisResults, dc.Context);
-
-                // Handle conversation interrupts first.
-                var interrupted = await IsTurnInterruptedAsync(dc, topIntent);
-                if (interrupted)
-                {
-                    // Bypass the dialog.
-                    // Save state before the next turn.
-                    await _conversationState.SaveChangesAsync(turnContext);
-                    await _userState.SaveChangesAsync(turnContext);
-                    return;
-                }
-
-                // Continue the current dialog
-                var dialogResult = await dc.ContinueDialogAsync();
-
-                // if no one has responded,
-                if (!dc.Context.Responded)
-                {
-                    // examine results from active dialog
-                    switch (dialogResult.Status)
-                    {
-                        case DialogTurnStatus.Empty:
-                            switch (topIntent)
-                            {
-                                case GreetingIntent:
-                                    await dc.BeginDialogAsync(nameof(GreetingDialog));
-                                    break;
-
-                                case NoneIntent:
-                                default:
-                                    // Help or no intent identified, either way, let's provide some help.
-                                    // to the user
-                                    await dc.Context.SendActivityAsync("I didn't understand what you just said to me.");
-                                    break;
-                            }
-
-                            break;
-
-                        case DialogTurnStatus.Waiting:
-                            // The active dialog is waiting for a response from the user, so do nothing.
-                            break;
-
-                        case DialogTurnStatus.Complete:
-                            await dc.EndDialogAsync();
-                            break;
-
-                        default:
-                            await dc.CancelAllDialogsAsync();
-                            break;
-                    }
-                }
-            }
-            else if (activity.Type == ActivityTypes.ConversationUpdate)
-            {
-                if (activity.MembersAdded != null)
-                {
-                    // Iterate over all new members added to the conversation.
-                    foreach (var member in activity.MembersAdded)
-                    {
-                        // Greet anyone that was not the target (recipient) of this message.
-                        // To learn more about Adaptive Cards, see https://aka.ms/msbot-adaptivecards for more details.
-                        if (member.Id != activity.Recipient.Id)
-                        {
-							var thumbnailCard = GetThumbnailCard();
-                            var welcomeCard = CreateAdaptiveCardAttachment();
-                            var response = CreateResponse(activity, null);
-							response.Attachments.Add(thumbnailCard.ToAttachment());
-                            await dc.Context.SendActivityAsync(response);
-                        }
-                    }
-                }
-            }
-
-            await _conversationState.SaveChangesAsync(turnContext);
-            await _userState.SaveChangesAsync(turnContext);
+			await turnContext.SendActivityAsync(response);
         }
 
         // Determine if an interruption has occurred before we dispatch to any active dialog.
