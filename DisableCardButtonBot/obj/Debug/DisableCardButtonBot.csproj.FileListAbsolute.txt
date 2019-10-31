@@ -1,0 +1,39 @@
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\Bot Application1.dll.config
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\Bot Application1.dll
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\Bot Application1.pdb
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\Autofac.dll
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\Chronic.dll
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\Microsoft.Bot.Builder.dll
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\Microsoft.Bot.Connector.dll
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\Microsoft.IdentityModel.Protocol.Extensions.dll
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\Microsoft.Rest.ClientRuntime.dll
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\Microsoft.WindowsAzure.Configuration.dll
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\Newtonsoft.Json.dll
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\System.IdentityModel.Tokens.Jwt.dll
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\System.Net.Http.Formatting.dll
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\System.Web.Http.dll
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\System.Web.Http.WebHost.dll
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\Autofac.xml
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\Microsoft.Bot.Builder.xml
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\Microsoft.Bot.Connector.xml
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\Microsoft.IdentityModel.Protocol.Extensions.pdb
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\Microsoft.IdentityModel.Protocol.Extensions.xml
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\Microsoft.Rest.ClientRuntime.xml
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\Microsoft.WindowsAzure.Configuration.xml
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\Newtonsoft.Json.xml
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\System.IdentityModel.Tokens.Jwt.pdb
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\System.IdentityModel.Tokens.Jwt.xml
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\System.Net.Http.Formatting.xml
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\System.Web.Http.xml
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\System.Web.Http.WebHost.xml
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\ar\Microsoft.Bot.Builder.resources.dll
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\en\Microsoft.Bot.Builder.resources.dll
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\es\Microsoft.Bot.Builder.resources.dll
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\fa\Microsoft.Bot.Builder.resources.dll
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\fr\Microsoft.Bot.Builder.resources.dll
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\ja\Microsoft.Bot.Builder.resources.dll
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\ru\Microsoft.Bot.Builder.resources.dll
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\bin\zh-hans\Microsoft.Bot.Builder.resources.dll
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\obj\Debug\DisableCardButtonBot.csprojResolveAssemblyReference.cache
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\obj\Debug\Bot Application1.dll
+c:\users\v-cogum\documents\visual studio 2015\Projects\DisableCardButtonBot\DisableCardButtonBot\obj\Debug\Bot Application1.pdb

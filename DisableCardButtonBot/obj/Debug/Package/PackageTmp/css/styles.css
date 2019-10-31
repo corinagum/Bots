@@ -1,0 +1,17 @@
+﻿h1 {
+	text-align: center;
+}
+
+#iframeWrapper {
+
+	margin: auto;
+	text-align: center;
+
+}
+
+iframe {
+
+	height:60vh;
+	width:40vw;
+
+}
