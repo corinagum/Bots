@@ -1,0 +1,50 @@
+{
+  "name": "corinagum-csharpthumbnail",
+  "padlock": "1KZWClPC4Xq8KaJcgyWDXg==!+aONJNxOzj6pTMtxpOvPvySFLxgDyRvsqnsSLT0cU0uj5yA3Okix4PM1nC1Felx7",
+  "version": "2.0",
+  "services": [
+    {
+      "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      "subscriptionId": "0389857f-2464-451b-ac83-5f54d565b1a7",
+      "resourceGroup": "corgumResourceGroup",
+      "serviceName": "corinagum-csharpthumbnail",
+      "type": "abs",
+      "name": "corinagum-csharpthumbnail",
+      "id": "1"
+    },
+    {
+      "connectionString": "3aWDg9vQEhNbIC9uiiCrDQ==!troOsWCKPQQrDw9w6+vUR0IAEsHDrylZT5JjHKns2ICdWuvzrzy+in0FeXGmRXj+E8a4JiXJMVKqxMQERfN6Gu+owemSdw+iHxaJ8Z3xzIhuyoqA/mSvlBRKw6NSxyA9gTX6dbdvIQu6bAgEKnwrr/mp95I7qih7NbhMmWoF3xgGlT6J4OtFy+Jpfuc6xufG5qMaEhP4VCOXZ2+5SWvCL0mzsjfyY5OcMnWPRl5+W6U=",
+      "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      "subscriptionId": "0389857f-2464-451b-ac83-5f54d565b1a7",
+      "resourceGroup": "corgumResourceGroup",
+      "serviceName": "corinagumcsharpthumbnail",
+      "type": "blob",
+      "id": "2"
+    },
+    {
+      "appId": "",
+      "appPassword": "",
+      "endpoint": "http://localhost:3978/api/messages",
+      "type": "endpoint",
+      "name": "development",
+      "id": "3"
+    },
+    {
+      "appId": "4d3cac8e-4c84-4da1-89f0-91ca0379ceb2",
+      "appPassword": "VWmpS3J43Mx/g/nJeSWxBA==!sIccBHZJ7tbbSouzZjnBCfTKh2Z3+PLgs3iJb3vXiyPrq72udEdH+/XGf7Vs7hss",
+      "endpoint": "https://corinagum-csharpthumbnail.azurewebsites.net/api/messages",
+      "type": "endpoint",
+      "name": "production",
+      "id": "4"
+    },
+    {
+      "appId": "8d67d516-94d5-400b-bad0-952cb983e1d3",
+      "authoringKey": "YXZ820y+9B7vF0ci5FDA5A==!FGAChoCsh8HBshrnRCZrtXweXKMur3B9MUmKm1J9xwKusTwh24/lpooCTT3CONeZ",
+      "version": "0.1",
+      "region": "westus",
+      "type": "luis",
+      "name": "BasicBotLuisApplication",
+      "id": "5"
+    }
+  ]
+}
