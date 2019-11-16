@@ -1,4 +1,4 @@
-rem @echo off
+@echo off
 setlocal
 SET password=%1
 SET repoName=srcRepo
@@ -24,7 +24,7 @@ pushd %HOME%\site
 mkdir srcRepo
 cd srcRepo
 call git init --bare
-popd 
+popd
 
 rem push to upstream
 pushd ..\wwwroot
@@ -40,7 +40,19 @@ call rm -r -f .git
 popd
 
 rem prepare for publish
-type PostDeployScripts\publish.js.template | sed -e s/\{WEB_SITE_NAME\}/%WEBSITE_SITE_NAME%/g | sed -e s/\{PASSWORD\}/%password%/g > %HOME%\site\%download%\publish.js
+pushd %HOME%\site\%download%
+mkdir Properties\PublishProfiles
+pushd Properties\PublishProfiles
+type ..\..\PostDeployScripts\publishProfile.xml.template | sed -e s/\{WEB_SITE_NAME\}/%WEBSITE_SITE_NAME%/g > %WEBSITE_SITE_NAME%-Web-Deploy.pubxml
+popd
+
+set SOLUTION_NAME=
+for /f "delims=" %%a in ('dir /b *.sln') do @set SOLUTION_NAME=%%a
+
+type PostDeployScripts\publish.cmd.template | sed -e s/\{SOLUTION_NAME\}/%SOLUTION_NAME%/g | sed -e s/\{PUBLISH_PROFILE\}/%WEBSITE_SITE_NAME%-Web-Deploy.pubxml/g | sed -e s/\{PASSWORD\}/%password%/g > publish.cmd
+type PostDeployScripts\publishSettings.xml.template | sed -e s/\{WEB_SITE_NAME\}/%WEBSITE_SITE_NAME%/g | sed -e s/\{PASSWORD\}/%password%/g > PostDeployScripts\%WEBSITE_SITE_NAME%.PublishSettings
+
+popd
 
 rem preare the zip file
 %HOMEDRIVE%\7zip\7za a %HOME%\site\%download%.zip %HOME%\site\%download%\*
